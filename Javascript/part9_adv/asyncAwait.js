@@ -2,6 +2,8 @@ function fetchUserData() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       reject({ name: "chaicode", url: "https://chaicode.com" });
+      resolve({ name: "chaicode", url: "https://chaicode.com" });
+
     }, 3000);
   });
 }

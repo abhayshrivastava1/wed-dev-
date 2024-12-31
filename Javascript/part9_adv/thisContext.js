@@ -1,5 +1,5 @@
 const person = {
-  name: "Hitesh",
+  name: "Abhay",
   greet() {
     console.log(`Hi, I am ${this.name}`);
   },
@@ -14,3 +14,6 @@ const boundGreet = person.greet.bind({ name: "John" });
 boundGreet();
 
 //bind, call and apply
+
+
+// https://medium.com/@omergoldberg/javascript-call-apply-and-bind-e5c27301f7bb
