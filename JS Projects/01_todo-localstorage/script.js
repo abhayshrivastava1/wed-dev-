@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-    tasks.forEach(task => renderTask(task));
+    tasks.forEach((task) => renderTask(task));
 
     addTaskButton.addEventListener('click', () => {
         const taskText = todoInput.value.trim();
@@ -89,10 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const newTask = {
             id: Date.now(),
             text: taskText,
-            completed: 'false'
-        }
+            completed: false,
+        };
         tasks.push(newTask);
         saveTasks();
+        renderTask(newTask);
         todoInput.value = ""; //clear input
         console.log(tasks);
 
@@ -104,10 +105,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function renderTask(task){
-        console.log(task);
+        // console.log(task);
 
-        const li = document.createElement('li');
-    li.setAttribute('data-id', task.id);
+        const li = document.createElement("li");
+    li.setAttribute("data-id", task.id);
     if(task.completed){
       li.classList.add("completed");
     }
@@ -121,26 +122,27 @@ document.addEventListener('DOMContentLoaded', () => {
       task.completed = !task.completed;
       li.classList.toggle("completed");
       saveTasks();
-    })
+    });
 
     // just for buttons
-    li.querySelector('button').addEventListener('click', (e) => {
+    li.querySelector("button").addEventListener("click", (e) => {
       e.stopPropagation()// prevent toggle from firing
-      tasks=tasks.filter(t => t.id !== task.id)
+      tasks=tasks.filter(t => t.id !== task.id);
+      li.remove();// iss ek line ke karan vo seedha click krne par nhi hata tha page vapis reload krna pada tha
       saveTasks();
-    })
+    });
 
 
-    toDoList.appendChild(li);
+    todoList.appendChild(li);
 
 
     }
 
     function saveTasks(){
-        localStorage.setItem('tasks', JSON.stringify(tasks))
+        localStorage.setItem('tasks', JSON.stringify(tasks));
     }
 
 // what we want to do is as soon as the page loads from the local storage grab all the tasks store the tasks inside the tasks array(line 79) and then immediately after that i am running a loop inside the loop inside the loop i read all the individual tasks from tasks array(line 79) and call the method renderTask on each of the task so that it can actually go ahead and render it
-})
+});
 
 
