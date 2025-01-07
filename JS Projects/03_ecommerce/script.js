@@ -64,6 +64,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   }
 
+
+  let cartStored = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   function renderCart(){
     cartItems.innerText = "";
 
@@ -136,4 +157,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
+// Exercise 2 ke liye ek savecart naam ka function banana padega jo har ek iteration ke baad cart array ko localstorage mein store karega
